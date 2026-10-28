@@ -4,21 +4,24 @@ Static site for **vytacode.com**, a VYTA-owned manual code-review lookup. It nee
 
 ## Layout
 
-- `source/`: build scripts and review data. This is what gets deployed from. It is never served publicly.
+- `source/`: build scripts, page content and review data. This is what gets deployed from. It is never served publicly.
+  - `content.mjs`: the editorial pages. `site.css` is the stylesheet.
   - `records.mjs`: loads the review records. On Vercel they come from the VYTA admin (see "Review records" below). Locally they come from `review-records.json`.
-  - `review-records.json`: the records used for local builds (VYTA10 and VYTA20 as launched).
-  - `build.mjs`: generates `source/dist/`, then runs `install-real.mjs` to embed the records into `app.js`.
-  - `check.mjs`: checks pages, internal links, noindex/viewport tags and lookup behaviour.
-- `website/`: a prebuilt copy of `source/dist/` for uploading to a plain static host. Vercel does not use it.
-- `vercel.json`: Vercel build, routing and header settings.
+  - `review-records.json`: the records used for local builds, with each code's observation history.
+  - `lookup.mjs` and `observations.mjs`: status labels, date/time validation and history ordering, shared by the build, the lookup and the checks. `observations.test.mjs` tests them.
+  - `build.mjs`: generates the site, including a page per code under `/codes/`. `--production` writes `source/dist-production/` with indexing on. Without it, `source/dist/` is a noindex preview.
+  - `check.mjs`: checks metadata, canonicals, structured data, links, indexing/sitemap rules and lookup behaviour. Pass `--production` to check the production build.
+  - `MAINTENANCE.md`: the record format and the publication-approval rules.
+- `website/`: a prebuilt copy of `source/dist-production/` for uploading to a plain static host. Vercel does not use it.
+- `vercel.json`: Vercel build, routing, redirect and header settings.
 
 ## Build locally
 
 ```bash
-node source/build.mjs && node source/check.mjs
+node source/observations.test.mjs && node source/build.mjs --production && node source/check.mjs --production
 ```
 
-The output is in `source/dist/`. After changing anything under `source/`, refresh the prebuilt copy with `rm -rf website && cp -r source/dist website`.
+The output is in `source/dist-production/`. Use `node source/build.mjs && node source/check.mjs` for the noindex preview in `source/dist/`. After changing anything under `source/`, refresh the prebuilt copy with `rm -rf website && cp -r source/dist-production website`.
 
 ## Deploy on Vercel
 
@@ -35,7 +38,9 @@ Vercel runs the build and the checks itself on every push, so a failing check bl
 - A real HTTP 404 status for unknown paths, using `404.html`.
 - `max-age=0, must-revalidate` caching, so record updates show up straight away.
 - Security headers, including a strict same-origin Content-Security-Policy.
-- `X-Robots-Tag: noindex`, on top of the page-level noindex and `robots.txt`.
+- A 301 redirect from the retired `/vyta-network/` page to `/about/`.
+
+Vercel builds the production version for every deploy. Preview deployments stay out of search results because Vercel adds `X-Robots-Tag: noindex` to them itself.
 
 ### Review records
 
@@ -56,6 +61,11 @@ One-time setup:
 
 Until `VYTA_RECORDS_URL` is set, builds use `source/review-records.json`.
 
-### Before going public
+### Indexing
 
-The site is deliberately not indexable and the legal pages are drafts. See "Current limitations" in [HOSTING.md](HOSTING.md). To allow indexing, remove the `X-Robots-Tag` header from `vercel.json`, the `noindex` meta in `build.mjs`, and the `Disallow: /` line in `robots.txt`. Then update `check.mjs`, which currently asserts noindex.
+The production build lets search engines index the nine evergreen information pages, and lists them in `sitemap.xml`. `robots.txt` allows crawling and points to the sitemap. These pages stay noindex:
+
+- `/codes/`, `/verification-archive/` and each `/codes/<code>/` page. Each one stays noindex until its records have `publicationApproved: true`, a `publicationApprovalReference` and `publicationApprovedJurisdictions` (see `source/MAINTENANCE.md`).
+- `/privacy/` and `/terms/`, while they are drafts.
+
+After the domain is live, submit `https://vytacode.com/sitemap.xml` in Google Search Console.

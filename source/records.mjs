@@ -12,7 +12,12 @@ function validate(raw,from){
     if(!r||!/^\d{4}-\d{2}-\d{2}$/.test(r.captureDate))throw new Error(`Bad captureDate for ${code} from ${from}`);
     if(typeof r.status!=='string')throw new Error(`Bad status for ${code} from ${from}`);
     if(r.captureTime!==undefined&&!/^\d{1,2}:\d{2}:\d{2} (AM|PM)$/.test(r.captureTime))throw new Error(`Bad captureTime for ${code} from ${from}`);
-    out[code]={captureDate:r.captureDate,status:r.status,...(r.captureTime?{captureTime:r.captureTime}:{})};
+    if(r.history!==undefined&&!(Array.isArray(r.history)&&r.history.every(h=>h&&typeof h==='object'&&!Array.isArray(h))))throw new Error(`Bad history for ${code} from ${from}`);
+    // Optional fields used by build.mjs: history for the record pages, timezone, and the
+    // publication-approval gate that decides whether code pages may be indexed.
+    const extra={};
+    for(const k of ['captureTimezone','history','publicationApproved','publicationApprovalReference','publicationApprovedJurisdictions'])if(r[k]!==undefined)extra[k]=r[k];
+    out[code]={captureDate:r.captureDate,status:r.status,...(r.captureTime?{captureTime:r.captureTime}:{}),...extra};
   }
   return out;
 }
