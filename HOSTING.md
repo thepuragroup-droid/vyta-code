@@ -13,3 +13,5 @@ Current limitations:
 - Visual browser/mobile testing and production update testing remain outstanding. Source/link/lookup checks pass.
 
 Host testing: visit all navigation routes; look up VYTA10 and VYTA20 and check dates/times; confirm unknown codes return Not reviewed; test mobile widths and keyboard access; confirm missing routes return HTTP 404. Test the next record update after deploying it. Configure domain DNS and HTTPS when the domain is connected.
+
+Vercel: this repo includes vercel.json, which builds from source/ and handles routing, the HTTP 404 status, caching and headers. Setup steps are in README.md.
