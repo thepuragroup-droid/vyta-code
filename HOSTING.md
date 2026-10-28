@@ -9,7 +9,7 @@ Current limitations:
 - Canonicals/sitemap target https://vytacode.com/.
 - Pages are noindex; robots.txt blocks crawling. Keep this for temporary hosting; review launch readiness and final URLs before enabling indexing.
 - Privacy/terms remain drafts. Operator details and marketing eligibility are unconfirmed.
-- Daily screenshot automation updates local files only. Connect an authorized deployment integration or manually redeploy updated builds.
+- Records are managed in the VYTA admin (Admin → VYTA Code) and pulled in at build time through VYTA_RECORDS_URL. Each admin change triggers a rebuild through a Vercel Deploy Hook. See README.md.
 - Visual browser/mobile testing and production update testing remain outstanding. Source/link/lookup checks pass.
 
 Host testing: visit all navigation routes; look up VYTA10 and VYTA20 and check dates/times; confirm unknown codes return Not reviewed; test mobile widths and keyboard access; confirm missing routes return HTTP 404. Test the next record update after deploying it. Configure domain DNS and HTTPS when the domain is connected.
