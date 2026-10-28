@@ -1,0 +1,107 @@
+{
+  "mode": "production",
+  "origin": "https://vytacode.com",
+  "pages": [
+    {
+      "path": "/verification-archive/",
+      "indexable": false,
+      "title": "VYTA Code Verification Archive: Dated Screenshot Observations",
+      "description": "Review the VYTA code screenshot archive by code, filename capture date, time and observed status. Follow each observation to its permanent code record."
+    },
+    {
+      "path": "/resources/",
+      "indexable": true,
+      "title": "VYTA Code Resource Library: Review Records & Eligibility Guides",
+      "description": "Find VYTA code review records, the screenshot archive, eligibility guidance, troubleshooting, editorial standards and ownership information in one resource library."
+    },
+    {
+      "path": "/",
+      "indexable": true,
+      "title": "VYTA Biosciences Code Verification & Records | VYTA Code",
+      "description": "Look up VYTA Bio (VYTA Biosciences) code review records, screenshot dates and verification status. Read eligibility guidance and code troubleshooting."
+    },
+    {
+      "path": "/codes/",
+      "indexable": false,
+      "title": "VYTA Code Review Directory & Check History | VYTA Code",
+      "description": "Browse dated VYTA screenshot review records. Read the observed status and capture time without assuming a code is currently active."
+    },
+    {
+      "path": "/process/",
+      "indexable": true,
+      "title": "How VYTA Codes Are Checked | VYTA Code",
+      "description": "Learn how the VYTA Code system checks submitted cart records, identifies applied codes and preserves the recorded date, time and result."
+    },
+    {
+      "path": "/statuses/",
+      "indexable": true,
+      "title": "VYTA Code Statuses: Verified in Cart, Unreviewed & Expired | VYTA Code",
+      "description": "Understand Code verified in cart, Settings reviewed, Not reviewed, Needs recheck and Expired labels used in VYTA code records."
+    },
+    {
+      "path": "/eligibility/",
+      "indexable": true,
+      "title": "VYTA Code Eligibility, Exclusions & Terms Explained | VYTA Code",
+      "description": "Understand region, eligible items, minimum spend, expiry and code combination restrictions. Learn what a VYTA screenshot review can and cannot confirm."
+    },
+    {
+      "path": "/help/",
+      "indexable": true,
+      "title": "VYTA Code Not Working? Eligibility & Review Help | VYTA Code",
+      "description": "Troubleshoot a VYTA code lookup or cart mismatch. Check exact spelling, eligibility, automatic offers and the age of screenshot evidence."
+    },
+    {
+      "path": "/editorial-standards/",
+      "indexable": true,
+      "title": "VYTA Code Editorial Standards & Corrections | VYTA Code",
+      "description": "Read VYTA Code standards for screenshot evidence, dated observations, corrections, ownership disclosure and publication of review summaries."
+    },
+    {
+      "path": "/affiliate-disclosure/",
+      "indexable": true,
+      "title": "VYTA Code Ownership & Affiliate Disclosure | VYTA Code",
+      "description": "VYTACode.com is a VYTA-owned information resource. Read how ownership and material connections are disclosed alongside code review information."
+    },
+    {
+      "path": "/about/",
+      "indexable": true,
+      "title": "About VYTA Code & Its VYTA Biosciences Ownership",
+      "description": "Learn why VYTA Code exists, how its record-based checks work, and how it relates to VYTA Biosciences and VYTA Bio."
+    },
+    {
+      "path": "/privacy/",
+      "indexable": false,
+      "title": "Privacy Notice | VYTA Code",
+      "description": "Learn how this website handles code lookup entries, public review summaries and private screenshot evidence."
+    },
+    {
+      "path": "/terms/",
+      "indexable": false,
+      "title": "Website Terms & Review Limitations | VYTA Code",
+      "description": "Read the scope and limitations of VYTA Code screenshot review records, including eligibility, dates and third-party website links."
+    },
+    {
+      "path": "/codes/vyta10/",
+      "indexable": false,
+      "title": "VYTA10 VYTA Code: Screenshot Review & Check History | VYTA Code",
+      "description": "Read the VYTA10 VYTA code screenshot observation from 2026-10-27 at 3:20:41 PM, its status and earlier review history."
+    },
+    {
+      "path": "/codes/vyta20/",
+      "indexable": false,
+      "title": "VYTA20 VYTA Code: Screenshot Review & Check History | VYTA Code",
+      "description": "Read the VYTA20 VYTA code screenshot observation from 2026-10-27 at 3:20:24 PM, its status and earlier review history."
+    }
+  ],
+  "sitemap": [
+    "https://vytacode.com/resources/",
+    "https://vytacode.com/",
+    "https://vytacode.com/process/",
+    "https://vytacode.com/statuses/",
+    "https://vytacode.com/eligibility/",
+    "https://vytacode.com/help/",
+    "https://vytacode.com/editorial-standards/",
+    "https://vytacode.com/affiliate-disclosure/",
+    "https://vytacode.com/about/"
+  ]
+}
